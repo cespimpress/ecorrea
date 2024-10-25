@@ -1,0 +1,15 @@
+
+ESTE ES EL ENLACE DE TELEGRAM:
+========================================================
+
+tg://resolve?domain=escribir aquí nombre de usuario
+
+========================================================
+
+ejemplo:
+
+tg://resolve?domain=cespimpress
+
+y modificar enlace en archivo index.php de 
+esta misma carpeta que por defecto viene el
+enlace de WhatsApp.
