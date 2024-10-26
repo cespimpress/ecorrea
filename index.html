@@ -454,14 +454,15 @@ $(document).ready(function() {
         mainClass: 'my-mfp-zoom-in',
         callbacks: {
             close: function() {
-                // Pausa el video al cerrar la ventana emergente
+                // Reinicia el src del video para detener la reproducción
                 var iframe = document.getElementById('video-iframe');
-                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                iframe.src = iframe.src;
             }
         }
     });
 });
 </script>
+
 			</div>
 			
 			<div class="clear"></div>
