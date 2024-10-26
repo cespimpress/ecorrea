@@ -434,7 +434,11 @@ window.load = setTimeout("document.body.removeChild(aviso)", 2000);
 </div>
 <div id="small-dialog" class="mfp-hide w3ls_small_dialog wthree_pop">        
     <div class="agileits_modal_body">
-        <iframe id="video-iframe" src="files/video.webm" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <iframe id="video-iframe" 
+                src="https://www.youtube.com/embed/ShBOL9CFKzE?enablejsapi=1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
     </div>
 </div>
 
@@ -456,12 +460,13 @@ $(document).ready(function() {
             close: function() {
                 // Reinicia el src del video para detener la reproducción
                 var iframe = document.getElementById('video-iframe');
-                iframe.src = iframe.src;
+                iframe.src = iframe.src;  // Reinicia el src del iframe
             }
         }
     });
 });
 </script>
+
 
 			</div>
 			
