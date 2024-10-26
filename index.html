@@ -429,32 +429,39 @@ window.load = setTimeout("document.body.removeChild(aviso)", 2000);
 													</li>
 												</ul>
 				
-				<div class="button">
-					<a href="#small-dialog" class="play-icon popup-with-zoom-anim">Click to play video</a>
-				</div>
-						<div id="small-dialog" class="mfp-hide w3ls_small_dialog wthree_pop">		
-						<div class="agileits_modal_body">
-							<iframe src="files/video.webm" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-						</div>
-					</div>
-	<!-- //pop-up-box -->
-					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-					<script>
-					$(document).ready(function() {
-					$('.popup-with-zoom-anim').magnificPopup({
-					type: 'inline',
-					fixedContentPos: false,
-					fixedBgPos: true,
-					overflowY: 'auto',
-					closeBtnInside: true,
-					preloader: false,
-					midClick: true,
-					removalDelay: 300,
-					mainClass: 'my-mfp-zoom-in'
-					});
+<div class="button">
+    <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Click to play video</a>
+</div>
+<div id="small-dialog" class="mfp-hide w3ls_small_dialog wthree_pop">        
+    <div class="agileits_modal_body">
+        <iframe id="video-iframe" src="files/video.webm" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+</div>
 
-					});
-					</script>
+<!-- //pop-up-box -->
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script>
+$(document).ready(function() {
+    $('.popup-with-zoom-anim').magnificPopup({
+        type: 'inline',
+        fixedContentPos: false,
+        fixedBgPos: true,
+        overflowY: 'auto',
+        closeBtnInside: true,
+        preloader: false,
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-zoom-in',
+        callbacks: {
+            close: function() {
+                // Pausa el video al cerrar la ventana emergente
+                var iframe = document.getElementById('video-iframe');
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            }
+        }
+    });
+});
+</script>
 			</div>
 			
 			<div class="clear"></div>
