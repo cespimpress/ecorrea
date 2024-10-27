@@ -1,6 +1,6 @@
 (function() {
     // Dominio principal permitido
-    const mainDomain = "idcard.ws", "webcard.site", landpg.online";
+    const mainDomain = "idcard.ws", "landpg.online";
 
     // Obtener el dominio actual
     const currentDomain = window.location.hostname;
