@@ -613,17 +613,11 @@ $(document).ready(function() {
 </section>
 
 <section data-bs-version="5.1" class="form1 cid-usdvuTPQnL" id="form1-d">
-
-    
-
-    
-    
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 mx-auto mbr-form">
-                <form action="https://hook.eu1.make.com/usftsv1xtu17crcucbrtfemp23qo2bkk" method="POST" class="mbr-form form-with-styler" data-verified="submit_form.php">
+                <form id="contactForm" class="mbr-form form-with-styler">
                     <div class="row">
-                        
                         <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
                             Oops...! some problem!
                         </div>
@@ -631,23 +625,57 @@ $(document).ready(function() {
                     <div class="dragArea row">
                         <div class="col-12">
                             <h1 class="mbr-section-title mb-4 mbr-fonts-style align-center display-5">
-                                <strong>Escriba sus datos para comunicarme con usted</strong></h1>
+                                <strong>Escriba sus datos para comunicarme con usted</strong>
+                            </h1>
                         </div>
-                        <div class="col-12">
-                            
-                        </div>
+                        <div class="col-12"></div>
                         <div class="col-md col-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Nombre" data-form-field="Name" class="form-control" id="name-form1-d">
+                            <input type="text" name="name" placeholder="Nombre" data-form-field="Name" class="form-control" id="name-form1-d" required>
                         </div>
                         <div class="col-md col-12 form-group mb-3" data-for="email">
-                            <input type="email" name="email" placeholder="Email" data-form-field="Email" class="form-control" id="email-form1-d">
+                            <input type="email" name="email" placeholder="Email" data-form-field="Email" class="form-control" id="email-form1-d" required>
                         </div>
-                        <div class="mbr-section-btn col-12 col-md-auto"><button type="submit" class="btn btn-success display-4">ENVIAR</button></div>
+                        <div class="mbr-section-btn col-12 col-md-auto">
+                            <button type="submit" class="btn btn-success display-4">ENVIAR</button>
+                        </div>
                     </div>
                 </form>
+                <!-- Mensaje de confirmación -->
+                <div id="successMessage" style="display: none; text-align: center; margin-top: 20px;">
+                    <h2>GRACIAS SU MENSAJE FUE ENVIADO</h2>
+                    <p>¡Me comunicaré con usted a la brevedad posible!</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
+            // Captura los datos del formulario
+            const formData = new FormData(this);
+
+            // Enviar los datos al webhook usando fetch
+            fetch("https://hook.eu1.make.com/usftsv1xtu17crcucbrtfemp23qo2bkk", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Oculta el formulario y muestra el mensaje de éxito
+                    document.getElementById("contactForm").style.display = "none";
+                    document.getElementById("successMessage").style.display = "block";
+                } else {
+                    alert("Hubo un problema al enviar el formulario. Inténtelo de nuevo.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Hubo un error en la conexión. Inténtelo de nuevo.");
+            });
+        });
+    </script>
 </section>
 
 <section data-bs-version="5.1" class="features16 cid-tzkorrpzOB" id="features17-4">
